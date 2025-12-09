@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">📒 Transactions</h2>
+
+<div class="table-container">
+<table class="clean-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book</th>
+            <th>Member</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for t in transactions %}
+        <tr>
+            <td>{{ t[0] }}</td>
+            <td>{{ t[1] }}</td>
+            <td>{{ t[2] }}</td>
+            <td>{{ t[3] }}</td>
+
+            <td>
+                {% if t[4] %}
+                    {{ t[4] }}
+                {% else %}
+                    <span class="no-date">---</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {% if t[4] %}
+                    <span class="status returned">Returned</span>
+                {% else %}
+                    <span class="status not-returned">Not Returned</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<style>
+
+
+.page-title {
+    margin-left: 50px;
+    margin-top: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+}
+
+
+.table-container {
+    width: 85%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+
+.clean-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+.clean-table th {
+    background: #f7f7f7;
+    padding: 14px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+}
+
+.clean-table td {
+    padding: 12px 10px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.clean-table tr:hover {
+    background: #fafafa;
+}
+
+
+.status {
+    padding: 6px 14px;
+    font-size: 15px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+}
+
+.returned {
+    background-color: #2ecc71; /* Green */
+}
+
+.not-returned {
+    background-color: #e74c3c; /* Red */
+}
+
+
+.no-date {
+    color: #888;
+    font-style: italic;
+}
+
+</style>
+
+{% endblock %}

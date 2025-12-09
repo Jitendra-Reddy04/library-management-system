@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <span class="logo">📚 Library</span>
+    </div>
+
+    <div class="nav-links" id="menu">
+        <a href="/">🏠 Home</a>
+        <a href="/view_books">📘 View Books</a>
+        <a href="/view_members">👥 View Members</a>
+        <a href="/add_member">➕ Add Member</a>
+        <a href="/issue_book">📖 Issue Book</a>
+        <a href="/return_book">🔄 Return Book</a>
+        <a href="/view_transactions">🧾 Transactions</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+
+<div class="content">
+
+ 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="flash {{ category }}">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

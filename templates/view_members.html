@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">👥 Members List</h2>
+<p><b> Please make sure to add  name in the library  before issue the book</b>
+     </p>
+
+     
+{% if request.args.get('added') %}
+<div class="success-msg">
+    ✅ Member added successfully! You can now issue a book.
+</div>
+{% endif %}
+
+<div class="table-container">
+<table class="clean-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th style="text-align:center;">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for m in members %}
+        <tr>
+            <td>{{ m[0] }}</td>
+            <td>{{ m[1] }}</td>
+            <td>{{ m[2] }}</td>
+            <td>{{ m[3] }}</td>
+            <td style="text-align:center;">
+                <a href="/issue_book?member_id={{ m[0] }}" class="issue-btn">
+                    Issue Book
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<style>
+
+.table-container {
+    width: 85%;
+    margin: 20px auto;
+}
+
+
+.clean-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 17px;
+}
+
+.clean-table thead {
+    background: #6c5ce7;
+    color: white;
+}
+
+.clean-table th, 
+.clean-table td {
+    padding: 14px 18px;
+}
+
+.clean-table tbody tr:nth-child(even) {
+    background: #f5f4ff;
+}
+
+
+.clean-table tbody tr:hover {
+    background: #e8e3ff;
+}
+
+
+.success-msg {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    margin: 10px auto;
+    width: 60%;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+
+.issue-btn {
+    background: #6c5ce7;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.issue-btn:hover {
+    background: #4b36c7;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>📚 Books List</h2>
+
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search books..." onkeyup="fetchSuggestions()">
+    <ul id="suggestions"></ul>
+</div>
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+
+    <tbody id="bookTable">
+        {% for b in books %}
+        <tr>
+            <td>{{ b[0] }}</td>
+            <td>{{ b[1] }}</td>
+            <td>{{ b[2] }}</td>
+            <td>{{ b[3] }}</td>
+            <td>{{ b[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+function fetchSuggestions() {
+    let query = document.getElementById("searchInput").value;
+
+   
+    filterTable(query);
+
+    if (query.trim() === "") {
+        document.getElementById("suggestions").innerHTML = "";
+        return;
+    }
+
+    fetch(`/book_suggest?q=${query}`)
+    .then(res => res.json())
+    .then(data => {
+        let list = "";
+        data.forEach(item => {
+            list += `<li onclick="selectSuggestion('${item}')">${item}</li>`;
+        });
+        document.getElementById("suggestions").innerHTML = list;
+    });
+}
+
+function selectSuggestion(text) {
+    document.getElementById("searchInput").value = text;
+    document.getElementById("suggestions").innerHTML = "";
+    filterTable(text);
+}
+
+
+function filterTable(query) {
+    query = query.toLowerCase();
+    let rows = document.querySelectorAll("#bookTable tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? "" : "none";
+    });
+}
+</script>
+
+{% endblock %}

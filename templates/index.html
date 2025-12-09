@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome to Library Management System</h1>
+
+
+<div class="cards">
+
+    <div class="card books-card">
+        <h2>📚 Books</h2>
+        <p>View all books in the library.</p>
+        <a href="/view_books">View Books →</a>
+    </div>
+
+       <div class="card addmember-card">
+        <h2>➕ Add Member</h2>
+        <p>Add a new library member.</p>
+        <a href="/add_member">Add Member →</a>
+    </div>
+
+    <div class="card members-card">
+        <h2>👤 Members</h2>
+        <p>View all registered library members.</p>
+        <a href="/view_members">View Members →</a>
+    </div>
+
+    <div class="card issue-card">
+        <h2>📖 Issue Books</h2>
+        <p>Issue books to members.</p>
+        <a href="/issue_book">Issue Book →</a>
+    </div>
+
+    <div class="card return-card">
+        <h2>🔁 Return Books</h2>
+        <p>Manage returned books.</p>
+        <a href="/return_book">Return Book →</a>
+    </div>
+
+</div>
+
+
+<br><br>
+
+
+    <div class="card trans-card">
+        <h2>📑 Transactions</h2>
+        <p>View issue and return history.</p>
+        <a href="/view_transactions">View Transactions →</a>
+    </div>
+
+</div>
+
+{% endblock %}

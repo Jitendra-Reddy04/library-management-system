@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">👤 Add Member</h2>
+
+<div class="form-card">
+    <form method="POST">
+
+       
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Enter full name" required>
+        </div>
+
+        
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter email address" required>
+        </div>
+
+        
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" name="phone" placeholder="Enter phone number" required>
+        </div>
+
+        <button class="submit-btn" type="submit">Add Member</button>
+
+    </form>
+</div>
+
+<style>
+
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.form-card {
+    max-width: 450px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #dcdcdc;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 6px rgba(108,99,255,0.4);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #5848e0;
+}
+
+</style>
+
+{% endblock %}
