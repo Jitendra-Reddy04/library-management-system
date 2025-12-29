@@ -4,7 +4,7 @@ GO
 USE library_db;
 GO
 
--- TABLE 1: Books
+    
 CREATE TABLE books (
     book_id INT IDENTITY(1,1) PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
@@ -13,7 +13,8 @@ CREATE TABLE books (
     quantity INT DEFAULT 1
 );
 
--- TABLE 2: Members
+
+
 CREATE TABLE members (
     member_id INT IDENTITY(1,1) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -21,7 +22,7 @@ CREATE TABLE members (
     phone VARCHAR(15)
 );
 
--- TABLE 3: Transactions
+
 CREATE TABLE transactions (
     transaction_id INT IDENTITY(1,1) PRIMARY KEY,
     book_id INT NOT NULL,
